@@ -8,5 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#1838F3</color>
+    <color name="sarcelle">#1DB9C3</color>
+    <color name="gris">#C8C6C6</color>
+    <color name="bleu_">#5C7AEA</color>
+
+
+
 
 </resources>
