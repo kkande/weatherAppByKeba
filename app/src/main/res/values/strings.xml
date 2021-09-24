@@ -2,8 +2,12 @@
     <string name="app_name">Weather App</string>
     <string name="title_splash_screen_title">by Kéba KANDE</string>
     <string name="toolbar">Weather App</string>
+    <integer name="swing_anim_time">750</integer>
+
 
     <string name="locationSpinner">Sélectionner votre lieu</string>
+    <string name="NameLocation">Nom de la ville</string>
+    <string name="temperature">Temperature</string>
 
 
 </resources>
