@@ -11,15 +11,6 @@
     android:orientation="vertical"
     android:id="@+id/container">
 
-<!--   <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>-->
-<!--
-    <include
-        layout="@layout/app_bar_accueil"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
-
     <LinearLayout
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -50,6 +41,7 @@
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:text="@string/locationSpinner"
             android:textColorHint="#000000"
+            android:textStyle="bold"
             android:textSize="20dp"
             android:layout_marginLeft="2dp"
             android:textColor="#000000"/>
@@ -59,13 +51,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"/>
-
-
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="clique"/>
 
 
 

@@ -1,0 +1,46 @@
+{
+  "coord": {
+    "lon": -4.0266,
+    "lat": 5.3364
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 298.92,
+    "feels_like": 300.01,
+    "temp_min": 298.92,
+    "temp_max": 298.92,
+    "pressure": 1012,
+    "humidity": 94
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.09,
+    "deg": 240
+  },
+  "rain": {
+    "1h": 0.17
+  },
+  "clouds": {
+    "all": 20
+  },
+  "dt": 1632510733,
+  "sys": {
+    "type": 1,
+    "id": 1162,
+    "country": "CI",
+    "sunrise": 1632463498,
+    "sunset": 1632507074
+  },
+  "timezone": 0,
+  "id": 8031575,
+  "name": "Attiecoubé",
+  "cod": 200
+}

@@ -1,15 +1,15 @@
 package com.example.weatherapp.utils;
 
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Retrofit2instance {
 
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://openweathermap.org/current";
+    private static final String BASE_URL = "https://openweathermap.org/";
+
 
     public static Retrofit getRetrofitInstance(){
         if (retrofit == null){

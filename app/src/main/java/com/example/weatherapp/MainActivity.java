@@ -7,12 +7,16 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.weatherapp.ui.fragment.CityFragment;
@@ -26,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     private Activity activity;
     CityFragment cityFragment;
-    private Button button;
+    Toast toast;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         activity = this;
 
-        button = findViewById(R.id.btn);
-
-
-       /* toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.toolbar));
-        setSupportActionBar(toolbar);*/
-
         spinner = findViewById(R.id.spinner);
-
         final List<String> list = new ArrayList<String>();
+        list.add("Sélectionner");
         list.add("Abidjan");
         list.add("Lyon");
         list.add("Londres");
@@ -52,36 +51,30 @@ public class MainActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
 
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
 
-                Toast.makeText(getApplicationContext(), "clique", Toast.LENGTH_SHORT).show();
+                if (i != 0) {
+                    setCityFragment();
+                    dataAdapter.notifyDataSetChanged();
 
 
+                    cityFragment.getCurrentDataLongLat();
+                    //cityFragment.getCurrentDataByName("Lyon");
+
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                FragmentManager fm = getSupportFragmentManager();
-                cityFragment = new CityFragment();
-                fm.beginTransaction().replace(R.id.container,cityFragment).commit();
-
-
-            }
-        });
-
-
     }
 
+    private void setCityFragment(){
+        FragmentManager fm = getSupportFragmentManager();
+        cityFragment = new CityFragment();
+        fm.beginTransaction().replace(R.id.container,cityFragment).addToBackStack(null).commit();
+    }
 }

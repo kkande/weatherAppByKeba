@@ -4,10 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.CityFragment"
-
     android:background="@color/white">
 
-<!--    android:id="@+id/framelayoutFragment"-->
     <LinearLayout
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -18,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/image_logo"
+            android:id="@+id/icon"
             android:layout_width="280dp"
             android:layout_height="222dp"
             android:layout_gravity="center"
@@ -32,10 +30,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:text="@string/NameLocation"
+                android:textStyle="bold"
                 android:textColorHint="#000000"
                 android:textSize="20dp"
                 android:layout_marginLeft="2dp"
@@ -43,13 +43,14 @@
 
             <TextView
                 android:id="@+id/temperature"
-                android:textSize="45dp"
+                android:textSize="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:textStyle="bold"
                 android:text="@string/locationSpinner"
+                android:textColor="@color/bleu_"
                 />
-
 
         </LinearLayout>
 

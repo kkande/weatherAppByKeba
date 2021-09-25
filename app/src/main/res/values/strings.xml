@@ -8,6 +8,7 @@
     <string name="locationSpinner">Sélectionner votre lieu</string>
     <string name="NameLocation">Nom de la ville</string>
     <string name="temperature">Temperature</string>
+    <string name="abidjan">Abidjan</string>
 
 
 </resources>
