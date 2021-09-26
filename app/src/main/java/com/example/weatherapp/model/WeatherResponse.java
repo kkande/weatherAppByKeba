@@ -227,6 +227,7 @@ public class WeatherResponse {
         @Expose
         public String description;
         @SerializedName("icon")
+        @Expose
         public String  icon;
 
         public Integer getId() {
@@ -264,14 +265,15 @@ public class WeatherResponse {
     }
 
 
-     class WeatherData {
+/*
+     public class WeatherData {
 
         @SerializedName("coord")
         @Expose
         private Coord coord;
         @SerializedName("weather")
         @Expose
-        private List<Weather> weather = null;
+        public List<WeatherData> weatherData = null;
         @SerializedName("base")
         @Expose
         private String base;
@@ -422,6 +424,7 @@ public class WeatherResponse {
         }
 
     }
+*/
 
 
      class Wind {

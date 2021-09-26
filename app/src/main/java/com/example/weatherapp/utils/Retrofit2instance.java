@@ -11,7 +11,7 @@ public class Retrofit2instance {
     private static final String BASE_URL = "https://openweathermap.org/";
 
 
-    public static Retrofit getRetrofitInstance(){
+    public static Retrofit getRetrofit2Instance(){
         if (retrofit == null){
             retrofit = new retrofit2.Retrofit.Builder()
                     .baseUrl(BASE_URL)

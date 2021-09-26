@@ -1,23 +1,18 @@
 package com.example.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.view.Gravity;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.weatherapp.ui.fragment.CityFragment;
 
@@ -26,11 +21,9 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    Toolbar toolbar;
     Spinner spinner;
     private Activity activity;
     CityFragment cityFragment;
-    Toast toast;
 
 
 
@@ -60,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 if (i != 0 && item.equals(getString(R.string.lyon))) {
                     setCityFragment();
                     dataAdapter.notifyDataSetChanged();
-                    cityFragment.getCurrentDataByName("Lyon");
+                    cityFragment.getCurrentDataByName(getString(R.string.lyon));
                 }
                 else if (i != 0 && item.equals(getString(R.string.londres))){
                     setCityFragment();
                     dataAdapter.notifyDataSetChanged();
-                    cityFragment.getCurrentDataByName("Londres");
+                    cityFragment.getCurrentDataByName(getString(R.string.londres));
                 }
                 else if (i != 0 && item.equals(getString(R.string.abidjan))){
                     setCityFragment();
                     dataAdapter.notifyDataSetChanged();
-                    cityFragment.getCurrentDataByName("Abidjan");
+                    cityFragment.getCurrentDataByName(getString(R.string.abidjan));
                 }
             }
 
