@@ -9,6 +9,9 @@
     <string name="NameLocation">Nom de la ville</string>
     <string name="temperature">Temperature</string>
     <string name="abidjan">Abidjan</string>
+    <string name="selectionner">Sélectionner</string>
+    <string name="lyon">Lyon</string>
+    <string name="londres">Londres</string>
 
 
 </resources>

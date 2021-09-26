@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner);
         final List<String> list = new ArrayList<String>();
-        list.add("Sélectionner");
-        list.add("Abidjan");
-        list.add("Lyon");
-        list.add("Londres");
+        list.add(getString(R.string.selectionner));
+        list.add(getString(R.string.abidjan));
+        list.add(getString(R.string.lyon));
+        list.add(getString(R.string.londres));
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
@@ -55,14 +55,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
 
-                if (i != 0) {
+                String item = (String) spinner.getSelectedItem();
+
+                if (i != 0 && item.equals(getString(R.string.lyon))) {
                     setCityFragment();
                     dataAdapter.notifyDataSetChanged();
-
-
-                    cityFragment.getCurrentDataLongLat();
-                    //cityFragment.getCurrentDataByName("Lyon");
-
+                    cityFragment.getCurrentDataByName("Lyon");
+                }
+                else if (i != 0 && item.equals(getString(R.string.londres))){
+                    setCityFragment();
+                    dataAdapter.notifyDataSetChanged();
+                    cityFragment.getCurrentDataByName("Londres");
+                }
+                else if (i != 0 && item.equals(getString(R.string.abidjan))){
+                    setCityFragment();
+                    dataAdapter.notifyDataSetChanged();
+                    cityFragment.getCurrentDataByName("Abidjan");
                 }
             }
 

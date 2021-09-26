@@ -98,7 +98,7 @@ public class CityFragment extends Fragment {
 
 
 
-   /* public void getCurrentDataByName(String city) {
+    public void getCurrentDataByName(String city) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -112,17 +112,18 @@ public class CityFragment extends Fragment {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;
 
-                    String stringBuilder = "Country: " +
-                            weatherResponse.sys.country +
-                            "\n" +
-                            "Temperature: " +
-                            String.format("%.0f",weatherResponse.main.temp - 273) +
-                            "\n" +
-                            "nom : " +
-                            weatherResponse.name ;
+                    String stringNom =
+                            "Nom de ville : " +
+                                    weatherResponse.name ;
 
-                    textView.setText(stringBuilder);
 
+                    String stringTemp =
+                            "Température: " +
+                                    String.format("%.0f", weatherResponse.main.temp - 273)+ "°C" ;
+
+
+                    textNom.setText(stringNom);
+                    textTemp.setText(stringTemp);
                     // Picasso.get().load(icon_url).into(holder.ivIcon);
 
 
@@ -131,60 +132,9 @@ public class CityFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<WeatherResponse> call, @NonNull Throwable t) {
-                textView.setText(t.getMessage());
-            }
+                textNom.setText(t.getMessage());
+                textTemp.setText(t.getMessage());            }
         });
     }
-*/
-
-    /*void getDataWeather(){
-        apiInterface = Retrofit2instance.getRetrofitInstance().create(ApiInterface.class);
-        Call<WeatherResponse> call = apiInterface.getWeatherData(lat, lon, AppId);
-
-        call.enqueue(new Callback<WeatherResponse>() {
-            @Override
-            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
-                if (response.code() == 200){
-
-                    Log.d("Retrofit2:dossiers en", call.request().url() + "");
-
-                    WeatherResponse weatherResponse = response.body();
-                    assert weatherResponse != null;
-
-                    String stringBuilder = "Country: " +
-                            weatherResponse.sys.country +
-                            "\n" +
-                            "Temperature: " +
-                            weatherResponse.main.temp +
-                            "\n" +
-                            "Temperature(Min): " +
-                            weatherResponse.main.tempMin +
-                            "\n" +
-                            "Temperature(Max): " +
-                            weatherResponse.main.tempMin +
-                            "\n" +
-                            "Humidity: " +
-                            weatherResponse.main.humidity +
-                            "\n" +
-                            "Pressure: " +
-                            weatherResponse.main.pressure;
-
-                    button.setText(stringBuilder);
-
-                    System.out.println("nameee---- : "+weatherResponse.main.temp );
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<WeatherResponse> call, Throwable t) {
-
-                button.setText(t.getMessage());
-
-            }
-        });
-    }*/
-
 
 }
