@@ -79,11 +79,11 @@ public class CityFragment extends Fragment {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;
 
-                    nameCity = "Ville : " + weatherResponse.name;
+                    nameCity = getString(R.string.ville) + weatherResponse.name;
 
                     icone = weatherResponse.weather.get(0).icon ;
 
-                    temp = "Température: " + String.format("%.0f", weatherResponse.main.temp - 273)+ "°C" ;
+                    temp = getString(R.string.temp) +  String.format("%.0f", weatherResponse.main.temp - 273)+ "°C" ;
 
 
                     textNom.setText(nameCity);

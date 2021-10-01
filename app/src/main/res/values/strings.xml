@@ -5,15 +5,15 @@
     <integer name="swing_anim_time">750</integer>
 
 
-    <string name="locationSpinner">Sélectionner votre lieu</string>
-    <string name="NameLocation">Nom de la ville</string>
+    <string name="locationSpinner">Sélectionner la ville</string>
+    <string name="NameLocation">Ville</string>
     <string name="temperature">Temperature</string>
     <string name="abidjan">Abidjan</string>
-    <string name="selectionner">Sélectionner</string>
+    <string name="selectionner">Sélectionner......</string>
     <string name="lyon">Lyon</string>
     <string name="londres">Londres</string>
-
-
+    <string name="temp">Température : </string>
+    <string name="ville">Ville : </string>
 
 
 </resources>
