@@ -7,7 +7,7 @@
     android:gravity="center"
     android:layout_height="match_parent"
     android:background="@color/gris"
-    tools:context=".MainActivity"
+    tools:context=".ui.activity.MainActivity"
     android:orientation="vertical"
     android:id="@+id/container">
 
@@ -36,6 +36,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/txtSelection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"

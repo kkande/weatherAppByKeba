@@ -1,29 +1,34 @@
 package com.example.weatherapp.ui.fragment;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.example.weatherapp.R;
 import com.example.weatherapp.model.WeatherResponse;
 import com.example.weatherapp.services.ApiInterface;
-import com.squareup.picasso.Picasso;
+import com.example.weatherapp.utils.Retrofit2Instance;
 
+import org.jetbrains.annotations.NotNull;
+
+import io.reactivex.Single;
+
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-
 
 
 public class CityFragment extends Fragment {
@@ -31,13 +36,13 @@ public class CityFragment extends Fragment {
     private TextView textNom ,textTemp ;
     public static String BaseUrl = "http://api.openweathermap.org/";
     public static String AppId = "cb65c3940d3be9356b54a7dfd01f938b";
-    public static String lat = "45.764043";
-    public static String lon = "4.5833";
     public static String name = "Lyon";
+
+
 
     String nameCity,icone, temp;
 
-    private ApiInterface apiInterface;
+    ApiInterface apiInterface;
 
     public CityFragment() {
     }
@@ -51,64 +56,20 @@ public class CityFragment extends Fragment {
         textTemp = (TextView)rootView.findViewById(R.id.temperature);
         imageView = (ImageView)rootView.findViewById(R.id.icon);
 
+        apiInterface = Retrofit2Instance.getRetrofit2Instance().create(ApiInterface.class);
+
 
         return rootView;
     }
 
-    public void getCurrentDataLongLat() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BaseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ApiInterface service = retrofit.create(ApiInterface.class);
-        Call<WeatherResponse> call = service.getCurrentWeatherData(lat, lon, AppId);
-        call.enqueue(new Callback<WeatherResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<WeatherResponse> call, @NonNull Response<WeatherResponse> response) {
-                if (response.code() == 200) {
-                    WeatherResponse weatherResponse = response.body();
-                    assert weatherResponse != null;
 
-
-                    String stringNom =
-                            "Nom de ville : " +
-                            weatherResponse.name +
-                                    "\n" +
-                                    "Icon: " +
-                                    weatherResponse.weather;
-
-                  //  String iconCode = weatherResponse.weather
-
-
-                    String stringTemp =
-                            "Température: " +
-                            String.format("%.0f", weatherResponse.main.temp - 273)+ "°C" ;
-
-
-                    textNom.setText(stringNom);
-                    textTemp.setText(stringTemp);
-
-
-                    // Picasso.get().load(icon_url).into(holder.ivIcon);
-
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<WeatherResponse> call, @NonNull Throwable t)
-            {
-                textNom.setText(t.getMessage());
-                textTemp.setText(t.getMessage());
-
-            }
-        });
-    }
 
     public void getCurrentDataByName(String city) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         ApiInterface service = retrofit.create(ApiInterface.class);
         Call<WeatherResponse> callResp = service.getCurrentWeatherByName(city, AppId);
         callResp.enqueue(new Callback<WeatherResponse>() {
@@ -239,5 +200,98 @@ public class CityFragment extends Fragment {
                 break;
         }
     }
+
+   /* public void getData(String name){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BaseUrl)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiInterface dataRequest = retrofit.create(ApiInterface.class);
+
+        dataRequest.getWeatherByName(name, AppId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<WeatherResponse>() {
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(@NotNull WeatherResponse weatherResponse) {
+                        if (weatherResponse != null ){
+
+                            nameCity = "Ville : " + weatherResponse.name;
+
+                            icone = weatherResponse.weather.get(0).icon ;
+
+                            temp = "Température: " + String.format("%.0f", weatherResponse.main.temp - 273)+ "°C" ;
+
+                            textNom.setText(nameCity);
+                            textTemp.setText(temp);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(@NotNull Throwable e) {
+
+                    }
+                });
+
+    }
+*/
+/*
+    public void getCurrentDataLongLat() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BaseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiInterface service = retrofit.create(ApiInterface.class);
+        Call<WeatherResponse> call = service.getCurrentWeatherData(lat, lon, AppId);
+        call.enqueue(new Callback<WeatherResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<WeatherResponse> call, @NonNull Response<WeatherResponse> response) {
+                if (response.code() == 200) {
+                    WeatherResponse weatherResponse = response.body();
+                    assert weatherResponse != null;
+
+
+                    String stringNom =
+                            "Nom de ville : " +
+                                    weatherResponse.name +
+                                    "\n" +
+                                    "Icon: " +
+                                    weatherResponse.weather;
+
+                    //  String iconCode = weatherResponse.weather
+
+
+                    String stringTemp =
+                            "Température: " +
+                                    String.format("%.0f", weatherResponse.main.temp - 273)+ "°C" ;
+
+
+                    textNom.setText(stringNom);
+                    textTemp.setText(stringTemp);
+
+
+                    // Picasso.get().load(icon_url).into(holder.ivIcon);
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<WeatherResponse> call, @NonNull Throwable t)
+            {
+                textNom.setText(t.getMessage());
+                textTemp.setText(t.getMessage());
+
+            }
+        });
+    }
+*/
 
 }

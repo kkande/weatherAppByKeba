@@ -5,7 +5,7 @@ package com.example.weatherapp.utils;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Retrofit2instance {
+public class Retrofit2Instance {
 
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://openweathermap.org/";

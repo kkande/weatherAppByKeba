@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.weatherapp.MainActivity;
 import com.example.weatherapp.R;
 
 public class Splash_screen extends AppCompatActivity {
