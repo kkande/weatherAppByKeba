@@ -1,9 +1,5 @@
 package com.example.weatherapp.ui.fragment;
 
-import android.database.Observable;
-
-import androidx.fragment.app.FragmentActivity;
-
 import com.example.weatherapp.model.WeatherResponse;
 import com.example.weatherapp.services.ApiInterface;
 
